@@ -6,7 +6,7 @@ ARG TPL_VERSION=v6.3.5
 FROM mcr.microsoft.com/devcontainers/base:jammy
 
 # 设置环境变量
-ENV http_proxy=http://host.docker.internal:29758
+# ENV http_proxy=http://host.docker.internal:29758
 
 # 设置清华镜像作为软件包源
 # RUN sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
