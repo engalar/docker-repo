@@ -2,11 +2,11 @@
 ARG MX_VER=9.24.12.20495
 # ARG MX_VER=9.18.4.62522
 ARG MPR_FILE=NativePortal.mpr
-ARG TPL_VERSION=v6.3.5
+ARG TPL_VERSION=v7.0.13
 FROM mcr.microsoft.com/devcontainers/base:jammy
 
 # 设置环境变量
-ENV http_proxy=http://host.docker.internal:29758
+# ENV http_proxy=http://host.docker.internal:29758
 
 # 设置清华镜像作为软件包源
 # RUN sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
@@ -19,7 +19,8 @@ RUN apt-get update && \
 
 # 下载并解压mxbuild
 RUN wget https://cdn.mendix.com/runtime/mxbuild-$MX_VER.tar.gz && \
-    tar -xzf mxbuild-$MX_VER.tar.gz -C /opt && \
+    mkdir --parents /opt/mxbuild-$MX_VER && \
+    tar -xzf mxbuild-$MX_VER.tar.gz -C /opt/mxbuild-$MX_VER && \
     rm mxbuild-$MX_VER.tar.gz
 
 # 使用mono运行mxbuild
